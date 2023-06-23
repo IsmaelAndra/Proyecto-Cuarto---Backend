@@ -4,23 +4,23 @@ import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
 @Injectable()
 export class ProductsService {
 
-    getAll() {
+    async getAll() {
         return 'Han sido seleccionados todos los productos';
     }
 
-    getOne(id: number) {
+    async getOne(id: number) {
         return 'Este producto a sido seleccionado';
     }
 
-    create(createProductDto: CreateProductDto) {
+    async create(createProductDto: CreateProductDto) {
         return 'Este producto a sido añadido';
     }
 
-    update(id: number, updateProductDto: UpdateProductDto) {
+    async update(id: number, updateProductDto: UpdateProductDto) {
         return 'El producto a sido actualizado';
     }
 
-    destroy(id: number) {
+    async destroy(id: number) {
         return 'El producto a sido eliminado';
     }
 }
