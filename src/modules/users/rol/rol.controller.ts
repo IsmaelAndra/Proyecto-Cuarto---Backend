@@ -12,7 +12,7 @@ export class RolController {
     }
 
     @Get(':id_rol')
-    findOneRol(@Param('id_rol') id_rol: number){
+    findOneRol(@Param('id_rol') id_rol: string){
         return this.rolService.findOne(id_rol);
     }
 
@@ -22,12 +22,12 @@ export class RolController {
     }
 
     @Patch(':id_rol')
-    updateRol(@Param('id_rol') id_rol: number, @Body() updateRolDto: UpdateRolDto){
+    updateRol(@Param('id_rol') id_rol: string, @Body() updateRolDto: UpdateRolDto){
         return this.rolService.update(id_rol, updateRolDto);
     }
 
     @Delete(':id_rol')
-    removeRol(@Param('id_rol') id_rol: number){
+    removeRol(@Param('id_rol') id_rol: string){
         return this.rolService.remove(id_rol);
     }
 }

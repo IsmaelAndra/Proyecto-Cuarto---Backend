@@ -4,6 +4,10 @@ import { BaseDto } from "src/modules/common";
 
 export class CreateUserDto extends BaseDto {
     @IsString()
+    @IsOptional()
+    photo_user: string;
+
+    @IsString()
     @IsNotEmpty()
     name_user: string;
 
@@ -23,9 +27,9 @@ export class CreateUserDto extends BaseDto {
     @IsNotEmpty()
     phone_user: string;
 
-    @IsDate()
+    @IsString()
     @IsNotEmpty()
-    date_of_birth_user: Date;
+    date_of_birth_user: string;
 
     @IsString()
     @IsNotEmpty()
@@ -43,6 +47,10 @@ export class CreateUserDto extends BaseDto {
 export class UpdateUserDto extends PartialType(CreateUserDto) {
     @IsString()
     @IsOptional()
+    photo_user: string;
+
+    @IsString()
+    @IsOptional()
     name_user: string;
 
     @IsString()
@@ -61,9 +69,9 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     @IsOptional()
     phone_user: string;
 
-    @IsDate()
+    @IsString()
     @IsOptional()
-    date_of_birth_user: Date;
+    date_of_birth_user: string;
 
     @IsString()
     @IsOptional()

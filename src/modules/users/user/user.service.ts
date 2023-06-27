@@ -25,7 +25,7 @@ export class UserService {
         }
     }
 
-    async findOne(id_user: number): Promise<UserModel>{
+    async findOne(id_user: string): Promise<UserModel>{
         try {
             return await this.userModel.createQueryBuilder('user').where({id_user}).getOne();
         } catch(e) {
@@ -42,7 +42,7 @@ export class UserService {
         }
     }
 
-    async update(id_user: number, updateUserDto: UpdateUserDto): Promise<UpdateResult|undefined>{
+    async update(id_user: string, updateUserDto: UpdateUserDto): Promise<UpdateResult|undefined>{
         try {
             const updateUser: UpdateResult = await this.userModel.update(id_user, updateUserDto);
             if(updateUser.affected === 0){
@@ -57,7 +57,7 @@ export class UserService {
         }
     }
 
-    async remove(id_user: number): Promise<DeleteResult|undefined> {
+    async remove(id_user: string): Promise<DeleteResult|undefined> {
         try {
             const removeUser: DeleteResult = await this.userModel.delete(id_user);
             if(removeUser.affected === 0){

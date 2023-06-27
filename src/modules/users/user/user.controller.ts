@@ -12,7 +12,7 @@ export class UserController {
     }
 
     @Get(':id_user')
-    async findOneUser(@Param('id_user') id_user: number){
+    async findOneUser(@Param('id_user') id_user: string){
         return await this.userService.findOne(id_user);
     }
 
@@ -22,12 +22,12 @@ export class UserController {
     }
 
     @Patch(':id_user')
-    async updateUser(@Param('id_user') id_user: number, @Body() updateUserDto: UpdateUserDto){
+    async updateUser(@Param('id_user') id_user: string, @Body() updateUserDto: UpdateUserDto){
         return await this.userService.update(id_user, updateUserDto);
     }
 
     @Delete(':id_user')
-    async removeUser(@Param('id_user') id_user: number){
+    async removeUser(@Param('id_user') id_user: string){
         return await this.userService.remove(id_user);
     }
 }

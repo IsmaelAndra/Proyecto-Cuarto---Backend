@@ -25,7 +25,7 @@ export class RolService {
         }
     }
 
-    async findOne(id_rol: number): Promise<RolModel>{
+    async findOne(id_rol: string): Promise<RolModel>{
         try {
             return await this.rolModel.createQueryBuilder('rol').where({id_rol}).getOne();
         } catch(e) {
@@ -42,7 +42,7 @@ export class RolService {
         }
     }
 
-    async update(id_rol: number, updateRolDto: UpdateRolDto): Promise<UpdateResult|undefined>{
+    async update(id_rol: string, updateRolDto: UpdateRolDto): Promise<UpdateResult|undefined>{
         try {
             const updateRol: UpdateResult = await this.rolModel.update(id_rol, updateRolDto);
             if(updateRol.affected === 0){
@@ -57,7 +57,7 @@ export class RolService {
         }
     }
 
-    async remove(id_rol: number): Promise<DeleteResult|undefined> {
+    async remove(id_rol: string): Promise<DeleteResult|undefined> {
         try {
             const removeRol: DeleteResult = await this.rolModel.delete(id_rol);
             if(removeRol.affected === 0){

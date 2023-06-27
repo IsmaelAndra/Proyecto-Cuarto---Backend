@@ -25,7 +25,7 @@ export class BillService {
         }
     }
 
-    async findOne(id_bill: number): Promise<BillModel>{
+    async findOne(id_bill: string): Promise<BillModel>{
         try {
             return await this.billModel.createQueryBuilder('bill').where({id_bill}).getOne();
         } catch(e) {
@@ -42,7 +42,7 @@ export class BillService {
         }
     }
 
-    async update(id_bill: number, updateBillDto: UpdateBillDto): Promise<UpdateResult|undefined>{
+    async update(id_bill: string, updateBillDto: UpdateBillDto): Promise<UpdateResult|undefined>{
         try {
             const updateBill: UpdateResult = await this.billModel.update(id_bill, updateBillDto);
             if(updateBill.affected === 0){
@@ -57,7 +57,7 @@ export class BillService {
         }
     }
 
-    async remove(id_bill: number): Promise<DeleteResult|undefined> {
+    async remove(id_bill: string): Promise<DeleteResult|undefined> {
         try {
             const removeBill: DeleteResult = await this.billModel.delete(id_bill);
             if(removeBill.affected === 0){

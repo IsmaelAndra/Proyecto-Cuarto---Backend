@@ -1,12 +1,12 @@
 import { BaseModel } from "src/modules/common";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { BillModel } from "../../bill/entities/bill.entity";
-import { ProductModel } from "src/modules/ventas/products/entities/product.entity";
+import { ProductModel } from "src/modules/store/products/entities/product.entity";
 
 @Entity()
 export class InvoiceDetailModel extends BaseModel {
     @PrimaryGeneratedColumn('uuid')
-    id_invoice_detail: number;
+    id_invoice_detail: string;
 
     @Column({
         type: 'varchar',

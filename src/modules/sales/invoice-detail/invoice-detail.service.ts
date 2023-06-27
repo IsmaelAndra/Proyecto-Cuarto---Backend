@@ -25,7 +25,7 @@ export class InvoiceDetailService {
         }
     }
 
-    async findOne(id_invoice_detail: number): Promise<InvoiceDetailModel>{
+    async findOne(id_invoice_detail: string): Promise<InvoiceDetailModel>{
         try {
             return await this.invoiceDetailModel.createQueryBuilder('invoice_detail').where({id_invoice_detail}).getOne();
         } catch(e) {
@@ -42,7 +42,7 @@ export class InvoiceDetailService {
         }
     }
 
-    async update(id_invoice_detail: number, updateInvoiceDetailDto: UpdateInvoiceDetailDto): Promise<UpdateResult|undefined>{
+    async update(id_invoice_detail: string, updateInvoiceDetailDto: UpdateInvoiceDetailDto): Promise<UpdateResult|undefined>{
         try {
             const updateInvoiceDetail: UpdateResult = await this.invoiceDetailModel.update(id_invoice_detail, updateInvoiceDetailDto);
             if(updateInvoiceDetail.affected === 0){
@@ -57,7 +57,7 @@ export class InvoiceDetailService {
         }
     }
 
-    async remove(id_invoice_detail: number): Promise<DeleteResult|undefined> {
+    async remove(id_invoice_detail: string): Promise<DeleteResult|undefined> {
         try {
             const removeInvoiceDetail: DeleteResult = await this.invoiceDetailModel.delete(id_invoice_detail);
             if(removeInvoiceDetail.affected === 0){

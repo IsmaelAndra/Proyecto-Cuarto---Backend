@@ -12,7 +12,7 @@ export class BillController {
     }
 
     @Get(':id_bill')
-    async findOneBill(@Param('id_bill') id_bill: number){
+    async findOneBill(@Param('id_bill') id_bill: string){
         return await this.billService.findOne(id_bill);
     }
 
@@ -22,12 +22,12 @@ export class BillController {
     }
 
     @Patch(':id_bill')
-    async updateBill(@Param('id_bill') id_bill: number, @Body() updateBillDto: UpdateBillDto){
+    async updateBill(@Param('id_bill') id_bill: string, @Body() updateBillDto: UpdateBillDto){
         return await this.billService.update(id_bill, updateBillDto);
     }
 
     @Delete(':id_bill')
-    async removeBill(@Param('id_bill') id_bill: number){
+    async removeBill(@Param('id_bill') id_bill: string){
         return await this.billService.remove(id_bill);
     }
 }

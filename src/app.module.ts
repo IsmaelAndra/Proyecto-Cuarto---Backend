@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { VentasModule } from './modules/ventas/ventas.module';
 import { UsersModule } from './modules/users/users.module';
 import { SalesModule } from './modules/sales/sales.module';
 import { DatabaseModule } from './database/database.module';
@@ -8,9 +7,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from './config/config.service';
 import { Configuration } from './config/config.key';
 import { join } from 'path';
+import { StoreModule } from './modules/store/store.module';
 
 @Module({
-  imports: [SalesModule, UsersModule, VentasModule, DatabaseModule, ConfigModule,
+  imports: [SalesModule, UsersModule, StoreModule, DatabaseModule, ConfigModule,
     TypeOrmModule.forRootAsync(
       {
         imports: [ConfigModule],

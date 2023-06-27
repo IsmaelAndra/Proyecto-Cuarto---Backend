@@ -12,7 +12,7 @@ export class InvoiceDetailController {
     }
 
     @Get(':id_invoice_detail')
-    async findOneInvoiceDetail(@Param('id_invoice_detail') id_invoice_detail: number){
+    async findOneInvoiceDetail(@Param('id_invoice_detail') id_invoice_detail: string){
         return await this.invoiceDetailService.findOne(id_invoice_detail);
     }
 
@@ -22,12 +22,12 @@ export class InvoiceDetailController {
     }
 
     @Patch(':id_invoice_detail')
-    async updateInvoiceDetail(@Param('id_invoice_detail') id_invoice_detail: number, @Body() updateInvoiceDetailDto: UpdateInvoiceDetailDto){
+    async updateInvoiceDetail(@Param('id_invoice_detail') id_invoice_detail: string, @Body() updateInvoiceDetailDto: UpdateInvoiceDetailDto){
         return await this.invoiceDetailService.update(id_invoice_detail, updateInvoiceDetailDto);
     }
 
     @Delete(':id_invoice_detail')
-    async removeInvoiceDetail(@Param('id_invoice_detail') id_invoice_detail: number){
+    async removeInvoiceDetail(@Param('id_invoice_detail') id_invoice_detail: string){
         return await this.invoiceDetailService.remove(id_invoice_detail);
     }
 }

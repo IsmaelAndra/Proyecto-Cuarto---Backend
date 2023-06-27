@@ -12,7 +12,7 @@ export class ProductsController {
     }
 
     @Get(':id_product')
-    async findOneProduct(@Param('id_product') id_product: number){
+    async findOneProduct(@Param('id_product') id_product: string){
         return await this.productsService.findOne(id_product);
     }
 
@@ -22,12 +22,12 @@ export class ProductsController {
     }
 
     @Patch(':id_product')
-    async updateProduct(@Param('id_product') id_product: number, @Body() updateProductDto: UpdateProductDto){
+    async updateProduct(@Param('id_product') id_product: string, @Body() updateProductDto: UpdateProductDto){
         return await this.productsService.update(id_product, updateProductDto);
     }
 
     @Delete(':id_product')
-    async removeProduct(@Param('id_product') id_product: number){
+    async removeProduct(@Param('id_product') id_product: string){
         return await this.productsService.remove(id_product);
     }
 }

@@ -6,7 +6,15 @@ import { BillModel } from "src/modules/sales/bill/entities/bill.entity";
 @Entity()
 export class UserModel extends BaseModel {
     @PrimaryGeneratedColumn('uuid')
-    id_user: number;
+    id_user: string;
+
+    @Column({
+        type: 'varchar',
+        name: 'photo_user',
+        nullable: true,
+        comment: 'Foto del usuario',
+    })
+    photo_user: string;
 
     @Column({
         type: 'varchar',
@@ -49,12 +57,12 @@ export class UserModel extends BaseModel {
     phone_user: string;
 
     @Column({
-        type: 'date',
+        type: 'varchar',
         name: 'date_of_birth_user',
         nullable: false,
         comment: 'Fecha de nacimiento del usuario',
     })
-    date_of_birth_user: Date;
+    date_of_birth_user: string;
 
     @Column({
         type: 'varchar',

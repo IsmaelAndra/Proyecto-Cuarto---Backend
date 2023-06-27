@@ -12,7 +12,7 @@ export class CategoryController {
     }
 
     @Get(':id_category')
-    async findOneCategory(@Param('id_category') id_category: number){
+    async findOneCategory(@Param('id_category') id_category: string){
         return await this.categoryService.findOne(id_category);
     }
 
@@ -22,12 +22,12 @@ export class CategoryController {
     }
 
     @Patch(':id_category')
-    async updateCategory(@Param('id_category') id_category: number, @Body() updateCategoryDto: UpdateCategoryDto){
+    async updateCategory(@Param('id_category') id_category: string, @Body() updateCategoryDto: UpdateCategoryDto){
         return await this.categoryService.update(id_category, updateCategoryDto);
     }
 
     @Delete(':id_category')
-    async removeCategory(@Param('id_category') id_category: number){
+    async removeCategory(@Param('id_category') id_category: string){
         return await this.categoryService.remove(id_category);
     }
 }

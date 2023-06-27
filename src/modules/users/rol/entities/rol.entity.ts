@@ -5,7 +5,7 @@ import { UserModel } from "../../user/entities/user.entity";
 @Entity()
 export class RolModel extends BaseModel {
     @PrimaryGeneratedColumn('uuid')
-    id_rol: number;
+    id_rol: string;
 
     @Column({
         type: 'varchar',

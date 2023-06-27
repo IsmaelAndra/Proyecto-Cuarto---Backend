@@ -6,7 +6,7 @@ import { InvoiceDetailModel } from "src/modules/sales/invoice-detail/entities/in
 @Entity()
 export class ProductModel extends BaseModel {
     @PrimaryGeneratedColumn('uuid')
-    id_product: number;
+    id_product: string;
 
     @Column({
         type: 'varchar',
@@ -46,7 +46,7 @@ export class ProductModel extends BaseModel {
         nullable: false,
         comment: 'Imagen del producto',
     })  
-    images_product: String;
+    images_product: string;
 
     @Column({
         type: 'boolean',

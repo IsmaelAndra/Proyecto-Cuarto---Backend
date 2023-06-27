@@ -5,7 +5,7 @@ import { ProductModel } from "../../products/entities/product.entity";
 @Entity()
 export class CategoryModel extends BaseModel {
     @PrimaryGeneratedColumn('uuid')
-    id_category: number;
+    id_category: string;
 
     @Column({
         type: 'varchar',

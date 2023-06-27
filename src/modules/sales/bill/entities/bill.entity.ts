@@ -6,7 +6,7 @@ import { InvoiceDetailModel } from "../../invoice-detail/entities/invoice-detail
 @Entity()
 export class BillModel extends BaseModel {
     @PrimaryGeneratedColumn('uuid')
-    id_bill: number;
+    id_bill: string;
 
     @Column({
         type: 'date',

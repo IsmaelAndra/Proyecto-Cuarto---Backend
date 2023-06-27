@@ -1,7 +1,6 @@
 import { PartialType } from "@nestjs/swagger";
 import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
 import { BaseDto } from "src/modules/common";
-import { Binary } from "typeorm";
 
 export class CreateProductDto extends BaseDto {
     @IsString()
@@ -23,7 +22,7 @@ export class CreateProductDto extends BaseDto {
 
     @IsString()
     @IsNotEmpty()
-    images_product: String;
+    images_product: string;
 
     @IsBoolean()
     @IsNotEmpty()
@@ -59,7 +58,7 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
 
     @IsString()
     @IsOptional()
-    images_product: String;
+    images_product: string;
 
     @IsBoolean()
     @IsOptional()

@@ -25,7 +25,7 @@ export class ProductsService {
         }
     }
 
-    async findOne(id_product: number): Promise<ProductModel>{
+    async findOne(id_product: string): Promise<ProductModel>{
         try {
             return await this.productModel.createQueryBuilder('product').where({id_product}).getOne();
         } catch(e) {
@@ -42,7 +42,7 @@ export class ProductsService {
         }
     }
 
-    async update(id_product: number, updateProductDto: UpdateProductDto): Promise<UpdateResult|undefined>{
+    async update(id_product: string, updateProductDto: UpdateProductDto): Promise<UpdateResult|undefined>{
         try {
             const updateProduct: UpdateResult = await this.productModel.update(id_product, updateProductDto);
             if(updateProduct.affected === 0){
@@ -57,7 +57,7 @@ export class ProductsService {
         }
     }
 
-    async remove(id_product: number): Promise<DeleteResult|undefined> {
+    async remove(id_product: string): Promise<DeleteResult|undefined> {
         try {
             const removeProduct: DeleteResult = await this.productModel.delete(id_product);
             if(removeProduct.affected === 0){

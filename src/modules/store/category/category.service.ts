@@ -25,7 +25,7 @@ export class CategoryService {
         }
     }
 
-    async findOne(id_category: number): Promise<CategoryModel>{
+    async findOne(id_category: string): Promise<CategoryModel>{
         try {
             return await this.categoryModel.createQueryBuilder('category').where({id_category}).getOne();
         } catch(e) {
@@ -42,7 +42,7 @@ export class CategoryService {
         }
     }
 
-    async update(id_category: number, updateCategoryDto: UpdateCategoryDto): Promise<UpdateResult|undefined>{
+    async update(id_category: string, updateCategoryDto: UpdateCategoryDto): Promise<UpdateResult|undefined>{
         try {
             const updateCategory: UpdateResult = await this.categoryModel.update(id_category, updateCategoryDto);
             if(updateCategory.affected === 0){
@@ -57,7 +57,7 @@ export class CategoryService {
         }
     }
 
-    async remove(id_category: number): Promise<DeleteResult|undefined> {
+    async remove(id_category: string): Promise<DeleteResult|undefined> {
         try {
             const removeCategory: DeleteResult = await this.categoryModel.delete(id_category);
             if(removeCategory.affected === 0){
