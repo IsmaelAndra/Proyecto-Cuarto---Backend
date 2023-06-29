@@ -8,9 +8,10 @@ import { ConfigService } from './config/config.service';
 import { Configuration } from './config/config.key';
 import { join } from 'path';
 import { StoreModule } from './modules/store/store.module';
+import { HistoriesModule } from './modules/histories/histories.module';
 
 @Module({
-  imports: [SalesModule, UsersModule, StoreModule, DatabaseModule, ConfigModule,
+  imports: [SalesModule, UsersModule, StoreModule, DatabaseModule, ConfigModule, HistoriesModule,
     TypeOrmModule.forRootAsync(
       {
         imports: [ConfigModule],
