@@ -1,18 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, Repository, UpdateResult } from 'typeorm';
-import { HistoryModel } from './entities/history.entity';
 import { ErrorManager } from 'src/utils/error.manage';
-import { CreateHistoryDto, UpdateHistoryDto } from './dto/history.dto';
+import { EventModel } from './entities/event.entity';
+import { DeleteResult, Repository, UpdateResult } from 'typeorm';
+import { CreateEventDto, UpdateEventDto } from './dto/event.dto';
 
 @Injectable()
-export class HistoryService {
-    
-    constructor(@InjectRepository(HistoryModel) private historyModel: Repository<HistoryModel>){}
+export class EventService {
+    constructor(@InjectRepository(EventModel) private eventModel: Repository<EventModel>){}
 
-    async findAll(): Promise<HistoryModel[]>{
+    async findAll(): Promise<EventModel[]>{
         try {
-            const historyAll: HistoryModel[] = await this.historyModel.find();
+            const historyAll: EventModel[] = await this.eventModel.find();
             if(historyAll.length === 0){
                 throw new ErrorManager({
                     type:'BAD_REQUEST',
@@ -25,26 +24,26 @@ export class HistoryService {
         }
     }
 
-    async findOne(id_history: string): Promise<HistoryModel>{
+    async findOne(id_history: string): Promise<EventModel>{
         try {
-            return await this.historyModel.createQueryBuilder('history').where({id_history}).getOne();
+            return await this.eventModel.createQueryBuilder('histories').where({id_history}).getOne();
         } catch(e) {
             throw new Error(e)
         }
     }
 
-    async create(createHistoryDto: CreateHistoryDto ): Promise<HistoryModel>{
+    async create(createHistoryDto: CreateEventDto): Promise<EventModel>{
         try {
-            const createHistory: HistoryModel = await this.historyModel.save(createHistoryDto);
+            const createHistory: EventModel = await this.eventModel.save(createHistoryDto);
             return createHistory;
         } catch(e){
             throw new Error(e)
         }
     }
 
-    async update(id_history: string, updateHistoryDto: UpdateHistoryDto): Promise<UpdateResult|undefined>{
+    async update(id_history: string, updateHistoryDto: UpdateEventDto): Promise<UpdateResult|undefined>{
         try {
-            const updateHistory: UpdateResult = await this.historyModel.update(id_history, updateHistoryDto);
+            const updateHistory: UpdateResult = await this.eventModel.update(id_history, updateHistoryDto);
             if(updateHistory.affected === 0){
                 throw new ErrorManager({
                     type: 'BAD_REQUEST',
@@ -59,7 +58,7 @@ export class HistoryService {
 
     async remove(id_history: string): Promise<DeleteResult|undefined> {
         try {
-            const removeHistory: DeleteResult = await this.historyModel.delete(id_history);
+            const removeHistory: DeleteResult = await this.eventModel.delete(id_history);
             if(removeHistory.affected === 0){
                 throw new ErrorManager({
                     type: 'BAD_REQUEST',

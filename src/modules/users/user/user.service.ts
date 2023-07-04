@@ -4,11 +4,13 @@ import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { UserModel } from './entities/user.entity';
 import { ErrorManager } from 'src/utils/error.manage';
 import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
+import { UserRepository } from './repositories/user.repository';
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class UserService {
     
-    constructor(@InjectRepository(UserModel) private userModel: Repository<UserModel>){}
+    constructor(@InjectRepository(UserModel) private userModel: Repository<UserModel>, private userRepository:UserRepository){}
 
     async findAll(): Promise<UserModel[]>{
         try {
@@ -35,6 +37,9 @@ export class UserService {
 
     async create(createUserDto: CreateUserDto): Promise<UserModel>{
         try {
+            const salt = await bcrypt.genSalt();
+            createUserDto.password_user = await bcrypt.hash(createUserDto.password_user, salt);
+            createUserDto.password_validation_user = await bcrypt.hash(createUserDto.password_validation_user, salt);
             const createUser: UserModel = await this.userModel.save(createUserDto);
             return createUser;
         } catch(e){
@@ -71,4 +76,20 @@ export class UserService {
             throw new ErrorManager.createSignatureError(e.message);
         }
     }
+
+    public async findBy({key, value}:{
+        key : keyof CreateUserDto;
+        value : any;
+      }){
+        try {
+          const user : UserModel = await this.userModel
+          .createQueryBuilder('user')
+          .addSelect('user.password_user')
+          .where({[key]: value})
+          .getOne(); 
+          return user;
+        }catch(e){
+          throw ErrorManager.createSignatureError(e.message);
+        }
+      }
 }

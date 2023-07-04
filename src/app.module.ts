@@ -8,13 +8,15 @@ import { ConfigService } from './config/config.service';
 import { Configuration } from './config/config.key';
 import { join } from 'path';
 import { StoreModule } from './modules/store/store.module';
-import { HistoriesModule } from './modules/histories/histories.module';
+import { EventModule } from './modules/event/event.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { UserRepository } from './modules/users/user/repositories/user.repository';
 
 @Module({
-  imports: [SalesModule, UsersModule, StoreModule, DatabaseModule, ConfigModule, HistoriesModule,
+  imports: [SalesModule, UsersModule, StoreModule, DatabaseModule, ConfigModule, EventModule,
     TypeOrmModule.forRootAsync(
       {
-        imports: [ConfigModule],
+        imports: [ConfigModule, AuthModule],
         inject: [ConfigService],
         async useFactory(config:ConfigService){
             return {
@@ -30,8 +32,9 @@ import { HistoriesModule } from './modules/histories/histories.module';
             }
         }
     }
-    )],
-  controllers: [],
+    ),
+    AuthModule],
+    providers: [UserRepository]
 })
 export class AppModule {
   static port: number | string;

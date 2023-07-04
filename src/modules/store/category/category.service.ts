@@ -9,7 +9,7 @@ import { ErrorManager } from 'src/utils/error.manage';
 export class CategoryService {
 
     constructor(@InjectRepository(CategoryModel) private categoryModel: Repository<CategoryModel>){}
-
+               
     async findAll(): Promise<CategoryModel[]>{
         try {
             const categoryAll: CategoryModel[] = await this.categoryModel.find();

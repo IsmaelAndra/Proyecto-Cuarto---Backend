@@ -1,5 +1,5 @@
 import { PartialType } from "@nestjs/swagger";
-import { IsBoolean, IsDate, IsNotEmpty, IsNumber, IsOptional, IsString, MaxLength, MinLength } from "class-validator";
+import { IsBoolean, IsDate, IsEmail, IsNotEmpty, IsNumber, IsObject, IsOptional, IsString, MaxLength, MinLength } from "class-validator";
 import { BaseDto } from "src/modules/common";
 
 export class CreateUserDto extends BaseDto {
@@ -15,7 +15,7 @@ export class CreateUserDto extends BaseDto {
     @IsNotEmpty()
     lastname_user: string;
 
-    @IsString()
+    @IsEmail()
     @IsNotEmpty()
     mail_user: string;
 
@@ -27,9 +27,9 @@ export class CreateUserDto extends BaseDto {
     @IsNotEmpty()
     phone_user: string;
 
-    @IsString()
+    @IsDate()
     @IsNotEmpty()
-    date_of_birth_user: string;
+    date_of_birth_user: Date;
 
     @IsString()
     @IsNotEmpty()
@@ -57,7 +57,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     @IsOptional()
     lastname_user: string;
 
-    @IsString()
+    @IsEmail()
     @IsOptional()
     mail_user: string;
 
@@ -69,9 +69,9 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     @IsOptional()
     phone_user: string;
 
-    @IsString()
+    @IsDate()
     @IsOptional()
-    date_of_birth_user: string;
+    date_of_birth_user: Date;
 
     @IsString()
     @IsOptional()

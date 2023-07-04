@@ -31,4 +31,3 @@ export class ProductsController {
         return await this.productsService.remove(id_product);
     }
 }
-

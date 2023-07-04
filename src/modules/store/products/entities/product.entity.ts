@@ -1,5 +1,5 @@
 import { BaseModel } from "src/modules/common";
-import { Binary, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { CategoryModel } from "../../category/entities/category.entity";
 import { InvoiceDetailModel } from "src/modules/sales/invoice-detail/entities/invoice-detail.entity";
 

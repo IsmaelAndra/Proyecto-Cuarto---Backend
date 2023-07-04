@@ -57,12 +57,12 @@ export class UserModel extends BaseModel {
     phone_user: string;
 
     @Column({
-        type: 'varchar',
+        type: 'date',
         name: 'date_of_birth_user',
         nullable: false,
         comment: 'Fecha de nacimiento del usuario',
     })
-    date_of_birth_user: string;
+    date_of_birth_user: Date;
 
     @Column({
         type: 'varchar',
